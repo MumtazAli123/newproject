@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:newproject/screens/login_page/login.dart';
+import 'package:newproject/screens/signing_screen/signing.dart';
 
 class CustomButton extends StatelessWidget {
   final String buttonText;
@@ -19,6 +21,27 @@ class CustomButton extends StatelessWidget {
         style: const TextStyle(
             fontSize: 23, color: Colors.white, fontWeight: FontWeight.w500),
       )),
+    );
+  }
+}
+
+class CustomButton002 extends StatelessWidget {
+  final String buttonText2;
+
+  const CustomButton002({Key? key, required this.buttonText2})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const LoginScreen()));
+      },
+      child: Text(
+        buttonText2,
+        style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 25),
+      ),
     );
   }
 }
