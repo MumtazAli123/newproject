@@ -6,10 +6,10 @@ class UIConfig {
     return InputDecoration(
       isDense: true,
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(50),
-        borderSide: BorderSide.none,
+        borderRadius: BorderRadius.circular(10),
+        // borderSide: BorderSide.none,
       ),
-      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 11),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 30, vertical: 11),
       fillColor: const Color(0xffF4F5F7),
       hintText: hintText,
       labelText: labelText,
