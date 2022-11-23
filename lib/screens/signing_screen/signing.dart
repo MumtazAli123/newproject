@@ -50,7 +50,7 @@ class _SigningScreenState extends State<SigningScreen> {
     return Center(
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 10),
-        width: 350,
+        width: 400,
         child: Form(
           key: _formKey,
           child: Padding(
@@ -67,8 +67,9 @@ class _SigningScreenState extends State<SigningScreen> {
                 TextFormField(
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Please enter Name';
+                      return ('Please enter Name');
                     }
+                    return null;
                   },
                   decoration: UIConfig().inputDecoration(
                       'Your Name', 'Name', Icons.person, null, null),
@@ -99,17 +100,13 @@ class _SigningScreenState extends State<SigningScreen> {
                     }
                     return null;
                   },
-                  decoration: UIConfig().inputDecoration(
-                      'your Password',
-                      'Password',
-                      Icons.lock,
-                      Icons.visibility,
-                      toogle_Password),
+                  decoration: UIConfig().inputDecoration('your Password',
+                      'Password', Icons.lock, Icons.visibility, togglePassword),
                 ),
                 const SizedBox(
                   height: 21,
                 ),
-                //signin button
+                //signing button
                 InkWell(
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
@@ -130,7 +127,7 @@ class _SigningScreenState extends State<SigningScreen> {
     );
   }
 
-  void toogle_Password() {
+  void togglePassword() {
     _obscureText = !_obscureText;
     setState(() {});
   }
@@ -144,7 +141,7 @@ class _SigningScreenState extends State<SigningScreen> {
       children: [
         Container(
           width: double.infinity,
-          height: 199,
+          height: 219,
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage(
