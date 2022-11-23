@@ -27,9 +27,11 @@ class CustomButton extends StatelessWidget {
 
 class CustomButton002 extends StatelessWidget {
   final String buttonText2;
-
-  const CustomButton002({Key? key, required this.buttonText2})
-      : super(key: key);
+  const CustomButton002({
+    Key? key,
+    required this.buttonText2,
+    void Function()? onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class CustomButton002 extends StatelessWidget {
       },
       child: Text(
         buttonText2,
-        style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 25),
+        style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
       ),
     );
   }

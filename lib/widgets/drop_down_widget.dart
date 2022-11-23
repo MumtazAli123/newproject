@@ -33,31 +33,28 @@ class _CustomDropDownWidgetsState extends State<CustomDropDownWidgets> {
               isOpen = !isOpen;
               setState(() {});
             },
-            child: Card(
-              elevation: 5,
-              child: Container(
-                width: double.infinity,
-                height: 40,
-                color: CupertinoColors.activeGreen,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text(
-                        "Select Country",
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: CupertinoColors.white,
-                        ),
-                      ),
-                      Icon(
-                        Icons.keyboard_arrow_down,
+            child: Container(
+              width: double.infinity,
+              height: 40,
+              color: CupertinoColors.activeGreen,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    Text(
+                      "Select Country",
+                      style: TextStyle(
+                        fontSize: 15,
                         color: CupertinoColors.white,
-                        size: 30,
                       ),
-                    ],
-                  ),
+                    ),
+                    Icon(
+                      Icons.keyboard_arrow_down,
+                      color: CupertinoColors.white,
+                      size: 30,
+                    ),
+                  ],
                 ),
               ),
             ),
