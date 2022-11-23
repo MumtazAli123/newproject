@@ -1,5 +1,5 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:newproject/screens/login_page/login.dart';
 
 import '../../widgets/button_widgets.dart';
 import '../../widgets/drop_down_widget.dart';
@@ -68,7 +68,7 @@ class _SigningScreenState extends State<SigningScreen> {
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter Name';
-                    } else if (value!.isNotEmpty) {}
+                    }
                   },
                   decoration: UIConfig().inputDecoration(
                       'Your Name', 'Name', Icons.person, null, null),
@@ -113,7 +113,9 @@ class _SigningScreenState extends State<SigningScreen> {
                 InkWell(
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
-                      print('validated');
+                      if (kDebugMode) {
+                        print('validated');
+                      }
                     }
                   },
                   child: const CustomButton(

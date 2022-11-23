@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:newproject/screens/login_page/login.dart';
-import 'package:newproject/screens/signing_screen/signing.dart';
 
 class CustomButton extends StatelessWidget {
   final String buttonText;
@@ -12,7 +11,7 @@ class CustomButton extends StatelessWidget {
       height: 40,
       width: 350,
       decoration: BoxDecoration(
-        color: Colors.green,
+        color: Colors.blue,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Center(

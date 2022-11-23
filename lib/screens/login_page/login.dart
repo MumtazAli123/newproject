@@ -1,6 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:newproject/screens/bottom_bar/bottomBar_screen.dart';
-import 'package:newproject/screens/signing_screen/signing.dart';
 import 'package:newproject/widgets/button_widgets.dart';
 import 'package:newproject/widgets/input_widgets.dart';
 
@@ -17,6 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: _buildAppBar(),
       body: _buildBody(),
     );
@@ -25,21 +26,26 @@ class _LoginScreenState extends State<LoginScreen> {
   _buildAppBar() {
     return AppBar(
       title: const Text('Login'),
+      backgroundColor: Colors.transparent,
+      elevation: 0,
     );
   }
 
   _buildBody() {
-    return Column(
-      children: [
-        Container(
-          // margin: const EdgeInsets.symmetric(horizontal: 10),
-          child: _buildInputTextField(),
-        ),
-        const SizedBox(
-          height: 21,
-        ),
-        _buildTextButton(),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          _buildImgBackGround(),
+          SizedBox(
+            height: 33,
+          ),
+          _buildInputTextField(),
+          SizedBox(
+            height: 21,
+          ),
+          _buildTextButton(),
+        ],
+      ),
     );
   }
 
@@ -90,7 +96,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   InkWell(
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
-                        print('validated');
+                        if (kDebugMode) {
+                          print('validated');
+                        }
                       }
                       Navigator.push(
                           context,
@@ -128,6 +136,28 @@ class _LoginScreenState extends State<LoginScreen> {
             buttonText2: 'Registration',
           ),
         )
+      ],
+    );
+  }
+
+  _buildImgBackGround() {
+    return Column(
+      children: [
+        Container(
+          width: double.infinity,
+          height: 199,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                'assets/images/dart8.jpeg',
+              ),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 31,
+        ),
       ],
     );
   }

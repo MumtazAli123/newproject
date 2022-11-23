@@ -9,7 +9,7 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       drawer: const SideBarScreen(),
-      backgroundColor: Colors.deepPurpleAccent,
+      backgroundColor: Colors.blue,
       appBar: _buildAppBar(),
       body: _buildBody(),
     );
