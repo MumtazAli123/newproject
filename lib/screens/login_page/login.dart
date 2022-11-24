@@ -4,6 +4,8 @@ import 'package:newproject/screens/bottom_bar/bottomBar_screen.dart';
 import 'package:newproject/widgets/button_widgets.dart';
 import 'package:newproject/widgets/input_widgets.dart';
 
+import 'forgot_password.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -36,11 +38,11 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Column(
         children: [
           _buildImgBackGround(),
-          SizedBox(
+          const SizedBox(
             height: 33,
           ),
           _buildInputTextField(),
-          SizedBox(
+          const SizedBox(
             height: 21,
           ),
           _buildTextButton(),
@@ -93,6 +95,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     height: 21,
                   ),
+                  _buildForgotTextButton(),
+                  const SizedBox(
+                    height: 21,
+                  ),
                   InkWell(
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
@@ -119,6 +125,26 @@ class _LoginScreenState extends State<LoginScreen> {
   void tooglePassword() {
     _obscureText = !_obscureText;
     setState(() {});
+  }
+
+  _buildForgotTextButton() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ForgotPasswordScreen()));
+          },
+          child: const Text(
+            'Forgot Password',
+            style: TextStyle(fontWeight: FontWeight.w400),
+          ),
+        )
+      ],
+    );
   }
 
   _buildTextButton() {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newproject/screens/home_page.dart';
+import 'package:newproject/screens/login_page/login.dart';
 import 'package:newproject/screens/signing_screen/signing.dart';
 
 class BottomBarScreen extends StatefulWidget {
@@ -13,7 +14,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
   int _currentIndex = 0;
   List<Widget> body = const [
     MyHomePage(),
-    Icon(Icons.search),
+    LoginScreen(),
     Icon(Icons.post_add),
     Icon(Icons.post_add),
     SigningScreen(),

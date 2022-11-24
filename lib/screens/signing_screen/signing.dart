@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:newproject/screens/login_page/login.dart';
 
 import '../../widgets/button_widgets.dart';
 import '../../widgets/drop_down_widget.dart';
@@ -19,6 +20,7 @@ class _SigningScreenState extends State<SigningScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
+      backgroundColor: Colors.white12,
       appBar: _buildAppbar(),
       body: _buildBody(),
     );
@@ -27,7 +29,19 @@ class _SigningScreenState extends State<SigningScreen> {
   //widget for appbar
   _buildAppbar() {
     return AppBar(
+      centerTitle: false,
       title: const Text('Registration'),
+      actions: [
+        // Text('Joined us Before'),
+        InkWell(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const LoginScreen()));
+          },
+          child: const Icon(Icons.lock),
+        ),
+        const Icon(Icons.more_vert),
+      ],
       backgroundColor: Colors.transparent,
       elevation: 0,
     );

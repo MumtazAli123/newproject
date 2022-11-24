@@ -3,7 +3,10 @@ import 'package:newproject/screens/login_page/login.dart';
 
 class CustomButton extends StatelessWidget {
   final String buttonText;
-  const CustomButton({Key? key, required this.buttonText}) : super(key: key);
+  const CustomButton({
+    Key? key,
+    required this.buttonText,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +42,14 @@ class CustomButton002 extends StatelessWidget {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => const LoginScreen()));
       },
-      child: Text(
-        buttonText2,
-        style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
+      child: Row(
+        children: [
+          const Icon(Icons.lock),
+          Text(
+            buttonText2,
+            style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
+          ),
+        ],
       ),
     );
   }
