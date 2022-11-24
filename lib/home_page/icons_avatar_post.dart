@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class StoryAvatarScreen extends StatelessWidget {
-  const StoryAvatarScreen({Key? key}) : super(key: key);
+class IconsAvatarScreen extends StatelessWidget {
+  const IconsAvatarScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,29 +47,29 @@ _build_Icons_AvatarList(
       ),
       Text(
         name,
-        style: const TextStyle(color: CupertinoColors.white),
+        style: const TextStyle(color: Colors.white),
       ),
     ],
   );
 }
 
-_buildAvatar() {
-  return Column(
-    children: [
-      SizedBox(
-        height: 150,
-        child: ListView(
-          semanticChildCount: 4,
-          scrollDirection: Axis.horizontal,
-          children: [
-            _build_Icons_AvatarList('ali', CupertinoIcons.airplane),
-            _build_Icons_AvatarList('subdir', Icons.home),
-            _build_Icons_AvatarList('subdir', Icons.home),
-            _build_Icons_AvatarList('subdir', Icons.home),
-            _build_Icons_AvatarList('subdir', Icons.home),
-          ],
-        ),
-      ),
-    ],
-  );
-}
+// _buildAvatar() {
+//   return Column(
+//     children: [
+//       SizedBox(
+//         height: 150,
+//         child: ListView(
+//           semanticChildCount: 4,
+//           scrollDirection: Axis.horizontal,
+//           children: [
+//             _build_Icons_AvatarList('ali', CupertinoIcons.airplane),
+//             _build_Icons_AvatarList('subdir', Icons.home),
+//             _build_Icons_AvatarList('subdir', Icons.home),
+//             _build_Icons_AvatarList('subdir', Icons.home),
+//             _build_Icons_AvatarList('subdir', Icons.home),
+//           ],
+//         ),
+//       ),
+//     ],
+//   );
+// }

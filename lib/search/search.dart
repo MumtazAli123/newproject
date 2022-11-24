@@ -27,7 +27,3 @@ _buildAppBar() {
 _buildBody() {
   return Container();
 }
-
-_buildSearchBar() {
-  return Container();
-}
