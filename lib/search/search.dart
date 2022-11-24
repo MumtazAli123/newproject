@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:newproject/widgets/input_widgets.dart';
 
 class SearchBarScreen extends StatefulWidget {
   const SearchBarScreen({Key? key}) : super(key: key);
@@ -20,16 +19,15 @@ class _SearchBarScreenState extends State<SearchBarScreen> {
 
 _buildAppBar() {
   return AppBar(
-    title: InkWell(
-      onTap: () {},
-      child: TextFormField(
-        decoration: UIConfig().inputDecoration(
-            'Search', 'Search', Icons.search, Icons.send, () {}),
-      ),
-    ),
+    title: const Text('Search Bar'),
+    actions: const [Icon(Icons.more_vert_outlined)],
   );
 }
 
 _buildBody() {
+  return Container();
+}
+
+_buildSearchBar() {
   return Container();
 }

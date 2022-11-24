@@ -14,7 +14,7 @@ class UIConfig {
           )),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        // borderSide: BorderSide.none,
+        borderSide: BorderSide.none,
       ),
       contentPadding: const EdgeInsets.symmetric(horizontal: 40, vertical: 21),
       fillColor: const Color(0xffF4F5F7),
