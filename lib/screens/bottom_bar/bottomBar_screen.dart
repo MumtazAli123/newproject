@@ -3,6 +3,8 @@ import 'package:newproject/home_page/home_page_screen.dart';
 import 'package:newproject/screens/signing_screen/signing.dart';
 import 'package:newproject/search/search.dart';
 
+import '../../wallet_screen/wallet.dart';
+
 class BottomBarScreen extends StatefulWidget {
   const BottomBarScreen({Key? key}) : super(key: key);
 
@@ -16,7 +18,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
     MyHomePageScreen(),
     SearchBarScreen(),
     Icon(Icons.post_add),
-    Icon(Icons.post_add),
+    WalletScreen(),
     SigningScreen(),
   ];
   @override

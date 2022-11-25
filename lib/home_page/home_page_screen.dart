@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newproject/home_page/icons_avatar_post.dart';
+import 'package:newproject/home_page/post_list_avatar.dart';
 import 'package:newproject/home_page/stories_avatar.dart';
 import 'package:newproject/sideBar.dart';
 
@@ -35,6 +36,7 @@ class MyHomePageScreen extends StatelessWidget {
         children: [
           _buildAvatarPost(),
           _buildStories(),
+          _buildPostListAvatar(),
           _buildBackImg(),
           _buildStories(),
         ],
@@ -79,6 +81,10 @@ class MyHomePageScreen extends StatelessWidget {
     );
   }
 
+  _buildPostListAvatar() {
+    return const PostListAvatar();
+  }
+
   _buildBackImg() {
     return const SizedBox(
       width: 600,
@@ -89,9 +95,11 @@ class MyHomePageScreen extends StatelessWidget {
 }
 
 _buildimg() {
-  return Image.asset(
-    './assets/images/dart12.jpeg',
-    fit: BoxFit.cover,
-    width: double.infinity,
+  return SizedBox(
+    child: Image.asset(
+      './assets/images/dart12.jpeg',
+      fit: BoxFit.cover,
+      width: double.infinity,
+    ),
   );
 }

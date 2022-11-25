@@ -17,7 +17,18 @@ class ForgotPasswordScreen extends StatelessWidget {
 _buildAppBar() {
   return AppBar(
     title: const Text('Forgot Password'),
-    actions: const [Icon(Icons.person)],
+    // leading: IconButton(
+    //   icon: const Icon(Icons.message),
+    //   onPressed: () {},
+    // ),
+    actions: const [Icon(Icons.notifications), Icon(Icons.search)],
+    flexibleSpace: Container(
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              colors: [Colors.red, Colors.blue],
+              begin: Alignment.bottomRight,
+              end: Alignment.topLeft)),
+    ),
   );
 }
 
