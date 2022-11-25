@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class IconsAvatarScreen extends StatelessWidget {
@@ -52,24 +51,3 @@ _build_Icons_AvatarList(
     ],
   );
 }
-
-// _buildAvatar() {
-//   return Column(
-//     children: [
-//       SizedBox(
-//         height: 150,
-//         child: ListView(
-//           semanticChildCount: 4,
-//           scrollDirection: Axis.horizontal,
-//           children: [
-//             _build_Icons_AvatarList('ali', CupertinoIcons.airplane),
-//             _build_Icons_AvatarList('subdir', Icons.home),
-//             _build_Icons_AvatarList('subdir', Icons.home),
-//             _build_Icons_AvatarList('subdir', Icons.home),
-//             _build_Icons_AvatarList('subdir', Icons.home),
-//           ],
-//         ),
-//       ),
-//     ],
-//   );
-// }
