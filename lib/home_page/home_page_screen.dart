@@ -51,8 +51,8 @@ class MyHomePageScreen extends StatelessWidget {
         width: 600,
         child: Column(
           children: [
-            Container(
-              padding: const EdgeInsets.all(0),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0, right: 5, top: 5),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
