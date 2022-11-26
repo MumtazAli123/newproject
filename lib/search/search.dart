@@ -11,8 +11,63 @@ class _SearchBarScreenState extends State<SearchBarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(),
-      body: _buildBody(),
+      extendBodyBehindAppBar: true,
+      body: CustomScrollView(
+        slivers: [
+          const SliverAppBar(
+            floating: true,
+            pinned: true,
+            snap: true,
+            stretch: false,
+            centerTitle: true,
+            title: Text('Search'),
+            bottom: PreferredSize(
+              preferredSize: Size.fromHeight(50),
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: SizedBox(
+                  child: Text('data'),
+                ),
+              ),
+            ),
+          ),
+          SliverList(
+              delegate: SliverChildListDelegate([
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.red,
+            ),
+            const SizedBox(
+              height: 100,
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.red,
+            ),
+            const SizedBox(
+              height: 100,
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.red,
+            ),
+            const SizedBox(
+              height: 100,
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.red,
+            ),
+            const SizedBox(
+              height: 100,
+            )
+          ])),
+        ],
+      ),
     );
   }
 }
@@ -24,6 +79,6 @@ _buildAppBar() {
   );
 }
 
-_buildBody() {
+_buildBodyContainer() {
   return Container();
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:newproject/home_page/icons_avatar_post.dart';
 import 'package:newproject/home_page/post_list_avatar.dart';
 import 'package:newproject/home_page/stories_avatar.dart';
-import 'package:newproject/sideBar.dart';
 
 class WalletScreen extends StatelessWidget {
   const WalletScreen({Key? key}) : super(key: key);
@@ -11,7 +10,7 @@ class WalletScreen extends StatelessWidget {
   Widget build(BuildContext context) => DefaultTabController(
         length: 4,
         child: Scaffold(
-          drawer: const SideBarScreen(),
+          // drawer: const SideBarScreen(),
           appBar: _buildAppBar(),
           body: _buildBody(),
         ),
@@ -27,7 +26,7 @@ class WalletScreen extends StatelessWidget {
       //   icon: const Icon(Icons.message),
       //   onPressed: () {},
       // ),
-      actions: const [Icon(Icons.notifications), Icon(Icons.search)],
+      actions: const [Icon(Icons.notifications), Icon(Icons.more_vert)],
       flexibleSpace: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -40,22 +39,81 @@ class WalletScreen extends StatelessWidget {
           // isScrollable: true,
           tabs: [
             Tab(
-              icon: Icon(Icons.home),
-              text: 'Home',
+              icon: Icon(Icons.account_balance_wallet),
+              text: 'Balance',
             ),
             Tab(
-              icon: Icon(Icons.home),
-              text: 'Home',
+              icon: Icon(Icons.send),
+              text: 'Send',
             ),
             Tab(
-              icon: Icon(Icons.home),
-              text: 'Home',
+              icon: Icon(Icons.account_balance),
+              text: 'TOP UP',
             ),
             Tab(
-              icon: Icon(Icons.home),
-              text: 'Home',
+              icon: Icon(Icons.history),
+              text: 'History',
             ),
           ]),
+    );
+  }
+
+  _buildBdoyBottom() {
+    return CustomScrollView(
+      slivers: [
+        const SliverAppBar(
+          floating: true,
+          pinned: true,
+          snap: true,
+          stretch: false,
+          centerTitle: true,
+          title: Text('Search'),
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(50),
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: SizedBox(
+                child: Text('data'),
+              ),
+            ),
+          ),
+        ),
+        SliverList(
+            delegate: SliverChildListDelegate([
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.red,
+          ),
+          const SizedBox(
+            height: 100,
+          ),
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.red,
+          ),
+          const SizedBox(
+            height: 100,
+          ),
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.red,
+          ),
+          const SizedBox(
+            height: 100,
+          ),
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.red,
+          ),
+          const SizedBox(
+            height: 100,
+          )
+        ])),
+      ],
     );
   }
 
@@ -71,7 +129,7 @@ class WalletScreen extends StatelessWidget {
   }
 
   buildPageHome(String text) {
-    return Text('data');
+    return _buildBdoyBottom();
   }
 
   buildPageApp(String text) {
