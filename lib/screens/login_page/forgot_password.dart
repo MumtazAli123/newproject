@@ -57,7 +57,10 @@ _buildBody() {
         const SizedBox(
           height: 30,
         ),
-        const CustomButton(buttonText: 'Submit')
+        CustomButton(
+          buttonText: 'Submit',
+          onPressed: () {},
+        )
       ],
     ),
   );

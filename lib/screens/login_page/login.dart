@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:newproject/screens/bottom_bar/bottomBar_screen.dart';
+import 'package:newproject/popup_widgets/popup_002.dart';
+import 'package:newproject/wallet_screen/wallet.dart';
 import 'package:newproject/widgets/button_widgets.dart';
 import 'package:newproject/widgets/input_widgets.dart';
 
@@ -106,12 +107,21 @@ class _LoginScreenState extends State<LoginScreen> {
                           print('validated');
                         }
                       }
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const BottomBarScreen()));
+
+                      ScreenPopUp002(context, 'Home Page', ' Welcome Back ',
+                          Icons.home, 'submit', 'Cancel', () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const WalletScreen()));
+                      }, () {
+                        Navigator.of(context).pop();
+                      });
                     },
-                    child: const CustomButton(buttonText: 'Submit'),
+                    child: CustomButton(
+                      buttonText: 'Submit',
+                      onPressed: () {},
+                    ),
                   )
                 ],
               ),

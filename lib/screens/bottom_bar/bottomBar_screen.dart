@@ -17,7 +17,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
   List<Widget> body = const [
     MyHomePageScreen(),
     SearchBarScreen(),
-    ScreenScrollView(),
+    SliverAppbar(),
     WalletScreen(),
     SigningScreen(),
   ];

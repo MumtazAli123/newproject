@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:newproject/screens/login_page/login.dart';
 
+import '../../post_screens/post_scrollview.dart';
 import '../../widgets/button_widgets.dart';
 import '../../widgets/drop_down_widget.dart';
 import '../../widgets/input_widgets.dart';
@@ -124,13 +125,25 @@ class _SigningScreenState extends State<SigningScreen> {
                 InkWell(
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
-                      if (kDebugMode) {
-                        print('validated');
-                      }
+                      print('validated');
                     }
                   },
-                  child: const CustomButton(
-                    buttonText: "Submit",
+                  child: CustomButton(
+                    buttonText: "signin",
+                    onPressed: () {
+                      showSigninPopup(
+                        context,
+                        'Signin',
+                        'Are you sure to signin',
+                        () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const SliverAppbar()));
+                        },
+                        () {
+                          Navigator.of(context).pop();
+                        },
+                      );
+                    },
                   ),
                 ),
               ],
@@ -190,4 +203,7 @@ class _SigningScreenState extends State<SigningScreen> {
       ],
     );
   }
+
+  void showSigninPopup(BuildContext context, String s, String t,
+      Null Function() param3, Null Function() param4) {}
 }

@@ -3,9 +3,11 @@ import 'package:newproject/screens/login_page/login.dart';
 
 class CustomButton extends StatelessWidget {
   final String buttonText;
+  final void Function() onPressed;
   const CustomButton({
     Key? key,
     required this.buttonText,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
