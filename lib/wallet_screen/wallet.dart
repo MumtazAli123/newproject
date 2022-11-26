@@ -10,7 +10,6 @@ class WalletScreen extends StatelessWidget {
   Widget build(BuildContext context) => DefaultTabController(
         length: 4,
         child: Scaffold(
-          // drawer: const SideBarScreen(),
           appBar: _buildAppBar(),
           body: _buildBody(),
         ),
@@ -58,65 +57,6 @@ class WalletScreen extends StatelessWidget {
     );
   }
 
-  _buildBdoyBottom() {
-    return CustomScrollView(
-      slivers: [
-        const SliverAppBar(
-          floating: true,
-          pinned: true,
-          snap: true,
-          stretch: false,
-          centerTitle: true,
-          title: Text('Search'),
-          bottom: PreferredSize(
-            preferredSize: Size.fromHeight(50),
-            child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: SizedBox(
-                child: Text('data'),
-              ),
-            ),
-          ),
-        ),
-        SliverList(
-            delegate: SliverChildListDelegate([
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.red,
-          ),
-          const SizedBox(
-            height: 100,
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.red,
-          ),
-          const SizedBox(
-            height: 100,
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.red,
-          ),
-          const SizedBox(
-            height: 100,
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.red,
-          ),
-          const SizedBox(
-            height: 100,
-          )
-        ])),
-      ],
-    );
-  }
-
   _buildBody() {
     return TabBarView(
       children: [
@@ -129,7 +69,7 @@ class WalletScreen extends StatelessWidget {
   }
 
   buildPageHome(String text) {
-    return _buildBdoyBottom();
+    return Text('data');
   }
 
   buildPageApp(String text) {
@@ -150,12 +90,13 @@ class WalletScreen extends StatelessWidget {
   }
 
   buildPageSend(String text) {
-    return Column(
+    return SingleChildScrollView(
+        child: Column(
       children: [
         _buildPost(),
         PostListAvatar(),
       ],
-    );
+    ));
   }
 
   _buildPost() {
