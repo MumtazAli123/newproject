@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:newproject/home_page/icons_avatar_post.dart';
-import 'package:newproject/home_page/post_list_avatar.dart';
-import 'package:newproject/home_page/stories_avatar.dart';
+import '../home_page_screeens/icons_avatar_post.dart';
+import '../home_page_screeens/post_list_avatar.dart';
+import '../home_page_screeens/stories_avatar.dart';
 
 class WalletScreen extends StatelessWidget {
   const WalletScreen({Key? key}) : super(key: key);

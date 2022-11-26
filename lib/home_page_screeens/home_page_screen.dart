@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:newproject/home_page/icons_avatar_post.dart';
-import 'package:newproject/home_page/post_list_avatar.dart';
-import 'package:newproject/home_page/stories_avatar.dart';
+import 'package:newproject/home_page_screeens/post_list_avatar.dart';
+import 'package:newproject/home_page_screeens/stories_avatar.dart';
 import 'package:newproject/sideBar.dart';
+
+import 'icons_avatar_post.dart';
 
 class MyHomePageScreen extends StatelessWidget {
   const MyHomePageScreen({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class MyHomePageScreen extends StatelessWidget {
       appBar: _buildAppBar(),
       body: Stack(
         children: [
-          _buildimg(),
+          _build_Img(),
           _buildBody(),
         ],
       ),
@@ -94,7 +95,7 @@ class MyHomePageScreen extends StatelessWidget {
   }
 }
 
-_buildimg() {
+_build_Img() {
   return SizedBox(
     child: Image.asset(
       './assets/images/dart12.jpeg',

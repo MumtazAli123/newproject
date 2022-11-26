@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:newproject/home_page/home_page_screen.dart';
+import 'package:newproject/post_screens/post_scrollview.dart';
 import 'package:newproject/screens/signing_screen/signing.dart';
 import 'package:newproject/search/search.dart';
-
+import '../../home_page_screeens/home_page_screen.dart';
 import '../../wallet_screen/wallet.dart';
 
 class BottomBarScreen extends StatefulWidget {
@@ -17,7 +17,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
   List<Widget> body = const [
     MyHomePageScreen(),
     SearchBarScreen(),
-    Icon(Icons.post_add),
+    ScreenScrollView(),
     WalletScreen(),
     SigningScreen(),
   ];

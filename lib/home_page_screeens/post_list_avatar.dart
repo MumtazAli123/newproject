@@ -16,6 +16,7 @@ class PostListAvatar extends StatelessWidget {
     return Card(
       elevation: 5,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
