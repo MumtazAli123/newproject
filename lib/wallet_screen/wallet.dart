@@ -69,13 +69,11 @@ class WalletScreen extends StatelessWidget {
   }
 
   buildPageHome(String text) {
-    return Text('data');
+    return const Text('data');
   }
 
   buildPageApp(String text) {
-    return Container(
-      child: const IconsAvatarScreen(),
-    );
+    return const IconsAvatarScreen();
   }
 
   buildPageMobile(String text) {
@@ -94,7 +92,7 @@ class WalletScreen extends StatelessWidget {
         child: Column(
       children: [
         _buildPost(),
-        PostListAvatar(),
+        const PostListAvatar(),
       ],
     ));
   }
@@ -102,7 +100,7 @@ class WalletScreen extends StatelessWidget {
   _buildPost() {
     return Card(
       elevation: 4,
-      child: Container(
+      child: SizedBox(
         width: 600,
         child: Column(
           children: [
@@ -125,6 +123,6 @@ class WalletScreen extends StatelessWidget {
   }
 
   _buildPosts() {
-    return StoriesAvatarScreen();
+    return const StoriesAvatarScreen();
   }
 }

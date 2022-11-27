@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:newproject/popup_widgets/popup_002.dart';
+import 'package:newproject/screens/signing_screen/signing.dart';
 import 'package:newproject/wallet_screen/wallet.dart';
 import 'package:newproject/widgets/button_widgets.dart';
 import 'package:newproject/widgets/input_widgets.dart';
-
 import 'forgot_password.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -161,17 +161,17 @@ class _LoginScreenState extends State<LoginScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
-      children: const [
-        Text(
+      children: [
+        const Text(
           'Not Registered ?',
           style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
         ),
         Card(
-          elevation: 1,
-          child: CustomButton002(
-            buttonText2: 'Registration',
-          ),
-        )
+            elevation: 1,
+            child: CustomButton002(
+                buttonText2: 'Register',
+                icon: Icons.lock,
+                onTap: () => const SigningScreen())),
       ],
     );
   }

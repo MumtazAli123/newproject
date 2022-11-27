@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:newproject/home_page_screeens/home_page_screen.dart';
 import 'package:newproject/screens/login_page/login.dart';
 
 class CustomButton extends StatelessWidget {
@@ -31,22 +33,21 @@ class CustomButton extends StatelessWidget {
 
 class CustomButton002 extends StatelessWidget {
   final String buttonText2;
+  final IconData icon;
   const CustomButton002({
     Key? key,
     required this.buttonText2,
     void Function()? onTap,
+    required this.icon,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const LoginScreen()));
-      },
+      onPressed: () {},
       child: Row(
         children: [
-          const Icon(Icons.lock),
+          Icon(icon),
           Text(
             buttonText2,
             style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
@@ -54,5 +55,33 @@ class CustomButton002 extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class CustomButton003 extends StatefulWidget {
+  final String name;
+  final IconData icon;
+  const CustomButton003({
+    Key? key,
+    required this.name,
+    required this.icon,
+  }) : super(key: key);
+
+  @override
+  State<CustomButton003> createState() => _CustomButton003State();
+}
+
+class _CustomButton003State extends State<CustomButton003> {
+  void callBack() {
+    if (kDebugMode) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => MyHomePageScreen()));
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+        onPressed: callBack, child: const Text(AutofillHints.name));
   }
 }

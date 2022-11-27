@@ -48,7 +48,7 @@ class MyHomePageScreen extends StatelessWidget {
   _buildStories() {
     return Card(
       elevation: 4,
-      child: Container(
+      child: SizedBox(
         width: 600,
         child: Column(
           children: [

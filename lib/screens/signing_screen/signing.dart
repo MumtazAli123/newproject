@@ -125,7 +125,9 @@ class _SigningScreenState extends State<SigningScreen> {
                 InkWell(
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
-                      print('validated');
+                      if (kDebugMode) {
+                        print('validated');
+                      }
                     }
                   },
                   child: CustomButton(
@@ -189,8 +191,8 @@ class _SigningScreenState extends State<SigningScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
-      children: const [
-        Text(
+      children: [
+        const Text(
           'Joined us Before',
           style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
         ),
@@ -198,8 +200,10 @@ class _SigningScreenState extends State<SigningScreen> {
           elevation: 1,
           child: CustomButton002(
             buttonText2: 'Login',
+            icon: Icons.hail,
+            onTap: () => const LoginScreen(),
           ),
-        )
+        ),
       ],
     );
   }
