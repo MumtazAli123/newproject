@@ -201,7 +201,10 @@ class _SigningScreenState extends State<SigningScreen> {
           child: CustomButton002(
             buttonText2: 'Login',
             icon: Icons.hail,
-            onTap: () => const LoginScreen(),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const LoginScreen()));
+            },
           ),
         ),
       ],

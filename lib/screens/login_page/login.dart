@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:newproject/popup_widgets/popup_002.dart';
+import 'package:newproject/models/user_profile_model.dart';
 import 'package:newproject/screens/signing_screen/signing.dart';
-import 'package:newproject/wallet_screen/wallet.dart';
+import 'package:newproject/services/http_services/http_services.dart';
 import 'package:newproject/widgets/button_widgets.dart';
 import 'package:newproject/widgets/input_widgets.dart';
 import 'forgot_password.dart';
@@ -15,6 +15,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController _emailController = TextEditingController();
+  UserProfileModel? authCustomerUser = UserProfileModel();
+  TextEditingController _passwordController = TextEditingController();
+  LoginApiServices _authenticationService = LoginApiServices();
   final _formKey = GlobalKey<FormState>();
   bool _obscureText = true;
   @override
@@ -67,6 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 21,
                   ),
                   TextFormField(
+                    controller: _emailController,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter Email';
@@ -80,6 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 21,
                   ),
                   TextFormField(
+                    controller: _passwordController,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter Strong Password';
@@ -100,29 +106,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     height: 21,
                   ),
-                  InkWell(
-                    onTap: () {
-                      if (_formKey.currentState!.validate()) {
-                        if (kDebugMode) {
-                          print('validated');
-                        }
-                      }
-
-                      ScreenPopUp002(context, 'Home Page', ' Welcome Back ',
-                          Icons.home, 'submit', 'Cancel', () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const WalletScreen()));
-                      }, () {
-                        Navigator.of(context).pop();
-                      });
-                    },
-                    child: CustomButton(
-                      buttonText: 'Submit',
-                      onPressed: () {},
-                    ),
-                  )
+                  CustomButton(
+                      buttonText: "Login",
+                      onPressed: () async {
+                        authCustomerUser = await _authenticationService.Login(
+                            _emailController.text,
+                            _passwordController.text,
+                            context);
+                      })
                 ],
               ),
             ),

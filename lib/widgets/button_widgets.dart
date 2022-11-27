@@ -44,7 +44,10 @@ class CustomButton002 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const LoginScreen()));
+      },
       child: Row(
         children: [
           Icon(icon),
