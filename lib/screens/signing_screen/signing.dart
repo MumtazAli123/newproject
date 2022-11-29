@@ -130,20 +130,10 @@ class _SigningScreenState extends State<SigningScreen> {
                       }
                     }
                   },
-                  child: CustomButton(
-                    buttonText: "signin",
-                    onPressed: () {
-                      showSigninPopup(
-                        context,
-                        'Signin',
-                        'Are you sure to signin',
-                        () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const SliverAppbar()));
-                        },
-                        () {
-                          Navigator.of(context).pop();
-                        },
+                  child: CustomButton(buttonText: 'Register', onPressed: (){
+
+    })
+
                       );
                     },
                   ),

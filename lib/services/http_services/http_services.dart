@@ -50,9 +50,9 @@ class LoginApiServices with ChangeNotifier {
   }
 
 //post login
-  Future Login(email, password, BuildContext context) async {
+  Future register(name, email, password, phone, BuildContext context) async {
     http.Response response = await _post(
-      "/login?email=$email&password=$password",
+      "/register?name$name&email=$email&password=$password&phone$phone",
       _getRequestHeaders(),
       {},
     );
@@ -60,9 +60,9 @@ class LoginApiServices with ChangeNotifier {
     if (response.statusCode == 200) {
       var jsonList = json.decode(response.body);
       print(jsonList);
-      _authToken = jsonList['data']['token'];
+      // _authToken = jsonList['data']['token'];
     } else {
-      CustomSnackBar.buildSuccessSnackbar(context, "USER NOT FOUND");
+      CustomSnackBar.buildSuccessSnackbar(context, "USER Faild");
     }
   }
 }

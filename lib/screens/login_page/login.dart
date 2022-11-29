@@ -15,10 +15,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController _emailController = TextEditingController();
-  UserProfileModel? authCustomerUser = UserProfileModel();
-  TextEditingController _passwordController = TextEditingController();
-  LoginApiServices _authenticationService = LoginApiServices();
+  // TextEditingController _emailController = TextEditingController();
+  // UserProfileModel? authCustomerUser = UserProfileModel();
+  // TextEditingController _passwordController = TextEditingController();
+  // LoginApiServices _authenticationService = LoginApiServices();
   final _formKey = GlobalKey<FormState>();
   bool _obscureText = true;
   @override
@@ -71,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 21,
                   ),
                   TextFormField(
-                    controller: _emailController,
+                    // controller: _emailController,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter Email';
@@ -85,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 21,
                   ),
                   TextFormField(
-                    controller: _passwordController,
+                    // controller: _passwordController,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter Strong Password';
@@ -109,10 +109,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   CustomButton(
                       buttonText: "Login",
                       onPressed: () async {
-                        authCustomerUser = await _authenticationService.Login(
-                            _emailController.text,
-                            _passwordController.text,
-                            context);
+                        // authCustomerUser = await _authenticationService.register(
+
+                        // _emailController.text,
+                        // _passwordController.text,
+                        // context);
                       })
                 ],
               ),
