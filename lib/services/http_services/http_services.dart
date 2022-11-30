@@ -49,20 +49,33 @@ class LoginApiServices with ChangeNotifier {
     return _authToken;
   }
 
-//post login
+  // Post Login Credential to API
+  Future register2(name, email, password, phone, BuildContext context) async {
+    http.Response response = await _post(
+        "/register?name$name&email=$email&phone$phone&password=$password",
+        _getRequestHeaders(), {});
+    // Response code
+    if (response.statusCode == 200) {
+      var jsonList = json.decode(response.body);
+      print(jsonList);
+      _authToken = jsonList['data']['token'];
+    } else {
+      CustomSnackBar.buildSuccessSnackbar(context, "USER NOT FOUND");
+    }
+  }
+
+//post Register
   Future register(name, email, password, phone, BuildContext context) async {
     http.Response response = await _post(
-      "/register?name$name&email=$email&password=$password&phone$phone",
-      _getRequestHeaders(),
-      {},
-    );
+        "/register?name$name&email=$email&password=$password&phone$phone",
+        _getRequestHeaders(), {});
 //    response code
     if (response.statusCode == 200) {
       var jsonList = json.decode(response.body);
       print(jsonList);
       // _authToken = jsonList['data']['token'];
     } else {
-      CustomSnackBar.buildSuccessSnackbar(context, "USER Faild");
+      throw Exception('Failed to post logout credentials');
     }
   }
 }

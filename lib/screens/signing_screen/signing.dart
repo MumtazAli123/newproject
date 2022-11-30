@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:newproject/models/user_profile_model.dart';
 import 'package:newproject/screens/login_page/login.dart';
+import 'package:newproject/services/http_services/http_services.dart';
 
 import '../../post_screens/post_scrollview.dart';
 import '../../widgets/button_widgets.dart';
@@ -15,13 +17,19 @@ class SigningScreen extends StatefulWidget {
 }
 
 class _SigningScreenState extends State<SigningScreen> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  UserProfileModel authCustomerUser = UserProfileModel();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  LoginApiServices _authenticationService = LoginApiServices();
   final _formKey = GlobalKey<FormState>();
   bool _obscureText = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      backgroundColor: Colors.white12,
+      extendBodyBehindAppBar: false,
+      backgroundColor: Colors.grey.shade200,
       appBar: _buildAppbar(),
       body: _buildBody(),
     );
@@ -30,7 +38,7 @@ class _SigningScreenState extends State<SigningScreen> {
   //widget for appbar
   _buildAppbar() {
     return AppBar(
-      centerTitle: false,
+      centerTitle: true,
       title: const Text('Registration'),
       actions: [
         // Text('Joined us Before'),
@@ -43,8 +51,8 @@ class _SigningScreenState extends State<SigningScreen> {
         ),
         const Icon(Icons.more_vert),
       ],
-      backgroundColor: Colors.transparent,
-      elevation: 0,
+      // backgroundColor: Colors.transparent,
+      // elevation: 0,
     );
   }
 
@@ -52,9 +60,9 @@ class _SigningScreenState extends State<SigningScreen> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          _buildImgBackGround(),
+          // _buildImgBackGround(),
           _buildTextField(),
-          _buildTextButton(),
+          // _buildTextButton(),
         ],
       ),
     );
@@ -64,83 +72,62 @@ class _SigningScreenState extends State<SigningScreen> {
   _buildTextField() {
     return Center(
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 10),
-        width: 400,
-        child: Form(
-          key: _formKey,
-          child: Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: Column(
-              children: [
-                _customDropDown(),
-                const SizedBox(
-                  height: 21,
-                ),
-                //signing text
-
-                //email text-field
-                TextFormField(
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return ('Please enter Name');
-                    }
-                    return null;
-                  },
-                  decoration: UIConfig().inputDecoration(
-                      'Your Name', 'Name', Icons.person, null, null),
-                ),
-                const SizedBox(
-                  height: 21,
-                ),
-
-                TextFormField(
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter Phone Number';
-                    }
-                    return null;
-                  },
-                  decoration: UIConfig().inputDecoration(
-                      'your Email', 'Email', Icons.email, null, null),
-                ),
-                const SizedBox(
-                  height: 21,
-                ),
-                //password text-field
-                TextFormField(
-                  obscureText: _obscureText,
-                  validator: (value) {
-                    if (value == null || value.isEmpty || value.length < 4) {
-                      return 'Please enter Strong password';
-                    }
-                    return null;
-                  },
-                  decoration: UIConfig().inputDecoration('your Password',
-                      'Password', Icons.lock, Icons.visibility, togglePassword),
-                ),
-                const SizedBox(
-                  height: 21,
-                ),
-                //signing button
-                InkWell(
-                  onTap: () {
-                    if (_formKey.currentState!.validate()) {
-                      if (kDebugMode) {
-                        print('validated');
-                      }
-                    }
-                  },
-                  child: CustomButton(buttonText: 'Register', onPressed: (){
-
-    })
-
-                      );
-                    },
-                  ),
-                ),
-              ],
+        padding: EdgeInsets.all(21),
+        margin: const EdgeInsets.symmetric(horizontal: 21, vertical: 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextFormField(
+              controller: _nameController,
+              decoration: UIConfig().inputDecoration(
+                  'Name', 'Enter Name', Icons.person, null, () {}),
             ),
-          ),
+            SizedBox(
+              height: 21,
+            ),
+            TextFormField(
+              controller: _emailController,
+              decoration: UIConfig().inputDecoration(
+                  'email', 'Enter ur Email', Icons.email, null, () {}),
+            ),
+            SizedBox(
+              height: 21,
+            ),
+            TextFormField(
+              controller: _phoneController,
+              decoration: UIConfig().inputDecoration('Phone',
+                  "Enter ur phone number", Icons.call_end, null, () {}),
+            ),
+            SizedBox(
+              height: 21,
+            ),
+            TextFormField(
+              controller: _passwordController,
+              obscureText: _obscureText,
+              validator: (value) {
+                if (value == null || value.isEmpty || value.length < 4) {
+                  return 'Please enter Strong password';
+                }
+                return null;
+              },
+              decoration: UIConfig().inputDecoration('your Password',
+                  'Password', Icons.lock, Icons.visibility, togglePassword),
+            ),
+            const SizedBox(
+              height: 21,
+            ),
+            CustomButton(
+                buttonText: 'Register',
+                onPressed: () async {
+                  authCustomerUser = await _authenticationService.register2(
+                      _nameController.text,
+                      _emailController.text,
+                      _phoneController,
+                      _passwordController.text,
+                      context);
+                }),
+          ],
         ),
       ),
     );
