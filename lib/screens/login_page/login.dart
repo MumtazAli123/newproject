@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:newproject/models/user_profile_model.dart';
+import 'package:newproject/screens/bottom_bar/bottomBar_screen.dart';
 import 'package:newproject/screens/signing_screen/signing.dart';
 import 'package:newproject/services/http_services/http_services.dart';
 import 'package:newproject/widgets/button_widgets.dart';
@@ -15,10 +16,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  // TextEditingController _emailController = TextEditingController();
-  // UserProfileModel? authCustomerUser = UserProfileModel();
-  // TextEditingController _passwordController = TextEditingController();
-  // LoginApiServices _authenticationService = LoginApiServices();
+  TextEditingController _emailController = TextEditingController();
+  UserProfileModel? authCustomerUser = UserProfileModel();
+  TextEditingController _passwordController = TextEditingController();
+  LoginApiServices _authenticationService = LoginApiServices();
   final _formKey = GlobalKey<FormState>();
   bool _obscureText = true;
   @override
@@ -71,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 21,
                   ),
                   TextFormField(
-                    // controller: _emailController,
+                    controller: _emailController,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter Email';
@@ -85,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 21,
                   ),
                   TextFormField(
-                    // controller: _passwordController,
+                    controller: _passwordController,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter Strong Password';
@@ -109,11 +110,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   CustomButton(
                       buttonText: "Login",
                       onPressed: () async {
-                        // authCustomerUser = await _authenticationService.register(
-
-                        // _emailController.text,
-                        // _passwordController.text,
-                        // context);
+                        _authenticationService.Login(_emailController.text,
+                            _passwordController.text, context);
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => const BottomBarScreen()));
                       })
                 ],
               ),
@@ -161,9 +163,13 @@ class _LoginScreenState extends State<LoginScreen> {
         Card(
             elevation: 1,
             child: CustomButton002(
-                buttonText2: 'Register',
-                icon: Icons.lock,
-                onTap: () => const SigningScreen())),
+                buttonText: "Register",
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SigningScreen()));
+                })),
       ],
     );
   }

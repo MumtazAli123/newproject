@@ -4,7 +4,6 @@ import 'package:newproject/models/user_profile_model.dart';
 import 'package:newproject/screens/login_page/login.dart';
 import 'package:newproject/services/http_services/http_services.dart';
 
-import '../../post_screens/post_scrollview.dart';
 import '../../widgets/button_widgets.dart';
 import '../../widgets/drop_down_widget.dart';
 import '../../widgets/input_widgets.dart';
@@ -17,12 +16,14 @@ class SigningScreen extends StatefulWidget {
 }
 
 class _SigningScreenState extends State<SigningScreen> {
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
   UserProfileModel authCustomerUser = UserProfileModel();
-  final TextEditingController _phoneController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  LoginApiServices _authenticationService = LoginApiServices();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+
+  final LoginApiServices _authenticationService = LoginApiServices();
+
   final _formKey = GlobalKey<FormState>();
   bool _obscureText = true;
   @override
@@ -40,16 +41,9 @@ class _SigningScreenState extends State<SigningScreen> {
     return AppBar(
       centerTitle: true,
       title: const Text('Registration'),
-      actions: [
-        // Text('Joined us Before'),
-        InkWell(
-          onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const LoginScreen()));
-          },
-          child: const Icon(Icons.lock),
-        ),
-        const Icon(Icons.more_vert),
+      actions: const [
+        Icon(Icons.lock),
+        Icon(Icons.more_vert),
       ],
       // backgroundColor: Colors.transparent,
       // elevation: 0,
@@ -62,7 +56,7 @@ class _SigningScreenState extends State<SigningScreen> {
         children: [
           // _buildImgBackGround(),
           _buildTextField(),
-          // _buildTextButton(),
+          _buildTextButton(),
         ],
       ),
     );
@@ -72,38 +66,38 @@ class _SigningScreenState extends State<SigningScreen> {
   _buildTextField() {
     return Center(
       child: Container(
-        padding: EdgeInsets.all(21),
+        padding: const EdgeInsets.all(21),
         margin: const EdgeInsets.symmetric(horizontal: 21, vertical: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TextFormField(
-              controller: _nameController,
+              controller: nameController,
               decoration: UIConfig().inputDecoration(
                   'Name', 'Enter Name', Icons.person, null, () {}),
             ),
-            SizedBox(
+            const SizedBox(
               height: 21,
             ),
             TextFormField(
-              controller: _emailController,
+              controller: emailController,
               decoration: UIConfig().inputDecoration(
                   'email', 'Enter ur Email', Icons.email, null, () {}),
             ),
-            SizedBox(
+            const SizedBox(
               height: 21,
             ),
             TextFormField(
-              controller: _phoneController,
+              controller: phoneController,
               decoration: UIConfig().inputDecoration('Phone',
                   "Enter ur phone number", Icons.call_end, null, () {}),
             ),
-            SizedBox(
+            const SizedBox(
               height: 21,
             ),
             TextFormField(
-              controller: _passwordController,
+              controller: passwordController,
               obscureText: _obscureText,
               validator: (value) {
                 if (value == null || value.isEmpty || value.length < 4) {
@@ -118,15 +112,16 @@ class _SigningScreenState extends State<SigningScreen> {
               height: 21,
             ),
             CustomButton(
-                buttonText: 'Register',
+                buttonText: "Submit",
                 onPressed: () async {
-                  authCustomerUser = await _authenticationService.register2(
-                      _nameController.text,
-                      _emailController.text,
-                      _phoneController,
-                      _passwordController.text,
+                  _authenticationService.Signup(
+                      nameController.text,
+                      emailController.text,
+                      passwordController.text,
+                      null,
+                      phoneController.text,
                       context);
-                }),
+                })
           ],
         ),
       ),
@@ -176,13 +171,13 @@ class _SigningScreenState extends State<SigningScreen> {
         Card(
           elevation: 1,
           child: CustomButton002(
-            buttonText2: 'Login',
-            icon: Icons.hail,
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const LoginScreen()));
-            },
-          ),
+              buttonText: 'Login',
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LoginScreen()));
+              }),
         ),
       ],
     );

@@ -15,49 +15,44 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
-      width: 350,
-      decoration: BoxDecoration(
-        color: Colors.blue,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Center(
+        width: 400,
+        height: 40,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: ElevatedButton(
+          onPressed: onPressed,
           child: Text(
-        buttonText,
-        style: const TextStyle(
-            fontSize: 23, color: Colors.white, fontWeight: FontWeight.w500),
-      )),
-    );
+            buttonText,
+            style: const TextStyle(fontSize: 20),
+          ),
+        ));
   }
 }
 
 class CustomButton002 extends StatelessWidget {
-  final String buttonText2;
-  final IconData icon;
+  final String buttonText;
+  final void Function() onPressed;
   const CustomButton002({
     Key? key,
-    required this.buttonText2,
-    void Function()? onTap,
-    required this.icon,
+    required this.buttonText,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const LoginScreen()));
-      },
-      child: Row(
-        children: [
-          Icon(icon),
-          Text(
-            buttonText2,
-            style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
+    return Container(
+        height: 40,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: TextButton(
+          onPressed: onPressed,
+          child: Text(
+            buttonText,
+            style: const TextStyle(fontSize: 20),
           ),
-        ],
-      ),
-    );
+        ));
   }
 }
 

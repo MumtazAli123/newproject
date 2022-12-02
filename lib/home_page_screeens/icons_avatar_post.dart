@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:newproject/screens/login_page/login.dart';
+import 'package:newproject/wallet_screen/wallet.dart';
 
 class IconsAvatarScreen extends StatelessWidget {
   const IconsAvatarScreen({Key? key}) : super(key: key);
@@ -12,14 +14,38 @@ class IconsAvatarScreen extends StatelessWidget {
         crossAxisSpacing: 5,
         mainAxisSpacing: 5,
         children: [
-          _build_Icons_AvatarList('Bus', Icons.directions_bus),
-          _build_Icons_AvatarList('Ticket', Icons.airplane_ticket_outlined),
-          _build_Icons_AvatarList('Hotel Booking', Icons.hotel),
-          _build_Icons_AvatarList('Taxi', Icons.local_taxi),
-          _build_Icons_AvatarList('Top Up', Icons.send_to_mobile),
-          _build_Icons_AvatarList('Pharmacy', Icons.local_pharmacy),
-          _build_Icons_AvatarList('Grocery', Icons.local_grocery_store),
-          _build_Icons_AvatarList('Food', Icons.food_bank),
+          _build_Icons_AvatarList(
+            'Bus',
+            Icons.bus_alert_sharp,
+          ),
+          _build_Icons_AvatarList(
+            'Ticket',
+            Icons.airplane_ticket_outlined,
+          ),
+          _build_Icons_AvatarList(
+            'Hotel Booking',
+            Icons.hotel,
+          ),
+          _build_Icons_AvatarList(
+            'Taxi',
+            Icons.local_taxi,
+          ),
+          _build_Icons_AvatarList(
+            'Top Up',
+            Icons.send_to_mobile,
+          ),
+          _build_Icons_AvatarList(
+            'Pharmacy',
+            Icons.local_pharmacy,
+          ),
+          _build_Icons_AvatarList(
+            'Grocery',
+            Icons.local_grocery_store,
+          ),
+          _build_Icons_AvatarList(
+            'Food',
+            Icons.food_bank,
+          ),
           // _buildAvatarList('', Icons.home),
         ],
       ),
@@ -30,6 +56,7 @@ class IconsAvatarScreen extends StatelessWidget {
 _build_Icons_AvatarList(
   String name,
   IconData icon,
+  // void Function() onPressed,
 ) {
   return Column(
     children: [
