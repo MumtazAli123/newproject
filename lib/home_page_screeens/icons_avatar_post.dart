@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:newproject/screens/user_profile/user_profile.dart';
-import 'package:newproject/wallet_screen/wallet.dart';
+import 'package:newproject/popup_widgets/popup_001_widgets.dart';
+import 'package:newproject/popup_widgets/popup_002.dart';
+import 'package:newproject/widgets/cupertino_widgets.dart';
 
 class IconsAvatarScreen extends StatelessWidget {
   const IconsAvatarScreen({Key? key}) : super(key: key);
@@ -16,14 +17,23 @@ class IconsAvatarScreen extends StatelessWidget {
         mainAxisSpacing: 5,
         children: [
           _build_Icons_AvatarList('Bus', Icons.directions_bus, () {
+            ScreenPopUp001(context, 'title', 'content', 'name', 'cancel', () {},
+                () {
+              Navigator.pop(context);
+            });
+          }),
+          _build_Icons_AvatarList('Ticket', Icons.airplane_ticket_outlined, () {
+            ScreenPopUp002(context, 'title', 'content', Icons.home, 'Ticket',
+                'cancel', () {}, () {
+              Navigator.pop(context);
+            });
+          }),
+          _build_Icons_AvatarList('Hotel Booking', Icons.hotel, () {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const UserProfileScreen()));
+                    builder: (context) => const ScreenCupertinoWidgets()));
           }),
-          _build_Icons_AvatarList(
-              'Ticket', Icons.airplane_ticket_outlined, () {}),
-          _build_Icons_AvatarList('Hotel Booking', Icons.hotel, () {}),
           _build_Icons_AvatarList('Taxi', Icons.local_taxi, () {}),
           _build_Icons_AvatarList('Top Up', Icons.send_to_mobile, () {}),
           _build_Icons_AvatarList('Pharmacy', Icons.local_pharmacy, () {}),

@@ -118,7 +118,7 @@ class _SigningScreenState extends State<SigningScreen> {
                       nameController.text,
                       emailController.text,
                       passwordController.text,
-                      null,
+                      passwordController.text,
                       phoneController.text,
                       context);
                 })
